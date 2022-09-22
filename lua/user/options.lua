@@ -27,7 +27,8 @@ local options = {
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- is one of my fav
-  sidescrolloff = 8,
+  sidescrolloff = 8,                       -- scroll left to right
+  wildmode = { "longest", "list" },        -- completion mode 
 }
 
 vim.opt.shortmess:append "c"

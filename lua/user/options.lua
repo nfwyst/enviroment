@@ -29,6 +29,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,                       -- scroll left to right
   wildmode = { "longest", "list" },        -- completion mode 
+  inccommand = "split"                     -- show preview in split window when in %s mode to replace something
 }
 
 vim.opt.shortmess:append "c"

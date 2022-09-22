@@ -29,7 +29,8 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,                       -- scroll left to right
   wildmode = "longest",                    -- completion mode 
-  inccommand = "split"                     -- show preview in split window when in %s mode to replace something
+  inccommand = "split",                    -- show preview in split window when in %s mode to replace something
+  lazyredraw = true,                       -- don't redraw while executing macros (good performance config)
 }
 
 vim.opt.shortmess:append "c"

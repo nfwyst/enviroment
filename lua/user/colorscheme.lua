@@ -18,7 +18,8 @@ augroup BgHighlight
   highlight link NormalFloat Normal
   highlight NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
   highlight Pmenu ctermbg=NONE guibg=NONE
-  highlight ColorColumn ctermbg=238
+  highlight ColorColumn guibg=238
+  highlight CursorLine gui=bold
 augroup END
 ]]
 

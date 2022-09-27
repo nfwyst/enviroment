@@ -30,6 +30,7 @@ local options = {
   sidescrolloff = 8,                       -- scroll left to right
   inccommand = "split",                    -- show preview in split window when in %s mode to replace something
   lazyredraw = true,                       -- don't redraw while executing macros (good performance config)
+  title = true,                            -- show title
 }
 
 vim.opt.shortmess:append "c"

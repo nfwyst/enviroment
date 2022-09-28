@@ -6,7 +6,7 @@ end
 local lspconfig = require("lspconfig")
 
 local servers = {
-  "jsonls", "sumneko_lua", "ccls", "cmake", "cssls", "cssmodules_ls", "gopls", "html", "sqls", "tsserver", "volar", "yamlls", "zk",
+  "jsonls", "sumneko_lua", "ccls", "cmake", "cssls", "gopls", "html", "sqls", "tsserver", "volar", "yamlls", "zk",
 }
 
 lsp_installer.setup({

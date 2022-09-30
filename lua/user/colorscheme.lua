@@ -3,6 +3,7 @@ vim.g.NeoSolarized_visibility = 'normal' -- low, normal, high
 vim.g.NeoSolarized_diffmode = 'normal' -- low, normal, high
 vim.g.NeoSolarized_termtrans = 1 -- 0(default) or 1 -> Transparency
 vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show backgroung in LineNr
+vim.g.Illuminate_ftblacklist = { 'NvimTree' }
 
 vim.cmd [[
 try
@@ -19,7 +20,8 @@ augroup BgHighlight
   highlight NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
   highlight Pmenu ctermbg=NONE guibg=NONE
   highlight ColorColumn guibg=238
-  highlight CursorLine gui=bold
+  highlight CursorLine gui=bold cterm=bold
+  highlight IlluminatedWordText gui=bold cterm=bold guibg=#002b36
 augroup END
 ]]
 

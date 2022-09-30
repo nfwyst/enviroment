@@ -18,6 +18,9 @@ nvim_tree.setup {
   renderer = {
     root_folder_modifier = ":t",
     icons = {
+      show = {
+        folder_arrow = false,
+      },
       glyphs = {
         default = "",
         symlink = "",
@@ -42,6 +45,11 @@ nvim_tree.setup {
         },
       },
     },
+    indent_width = 2,
+    indent_markers = {
+      enable = false,
+      inline_arrows = true,
+    },
   },
   diagnostics = {
     enable = true,
@@ -56,7 +64,7 @@ nvim_tree.setup {
   view = {
     adaptive_size = true,
     width = 30,
-    side = "left",
+    side = "right",
     mappings = {
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },

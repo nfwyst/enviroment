@@ -78,6 +78,18 @@ local opts = {
   nowait = true, -- use `nowait` when creating keymaps
 }
 
+local gopts = vim.tbl_deep_extend("force", opts, { prefix = "g" })
+
+local gmappings = {
+  ["D"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
+  ["d"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go to definition" },
+  ["I"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Go to implementation" },
+  ["r"] = { ":Telescope lsp_references<cr>", "Go to references" },
+  ["l"] = { '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<cr>', "Show diagnostic" },
+  ["k"] = { '<cmd>lua vim.lsp.buf.hover()<cr>', "Show hover info" },
+  ["K"] = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', "Show signature help" },
+}
+
 local mappings = {
   ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
@@ -132,11 +144,11 @@ local mappings = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
+      "<cmd>Telescope Telescope diagnostics bufnr=0<cr>",
       "Document Diagnostics",
     },
     w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+      "<cmd>Telescope diagnostics<cr>",
       "Workspace Diagnostics",
     },
     f = { "<cmd>lua vim.lsp.buf.formatting{async=true}<cr>", "Format" },
@@ -159,9 +171,9 @@ local mappings = {
       "Workspace Symbols",
     },
   },
+
   s = {
     name = "Search",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
@@ -185,3 +197,4 @@ local mappings = {
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
+which_key.register(gmappings, gopts)

@@ -30,12 +30,12 @@ local function footer()
   end
 	local fortune = handle:read("*a")
 	handle:close()
-	return " "..fortune
+	return fortune
 end
 
 dashboard.section.footer.val = footer()
 
-dashboard.section.footer.opts.hl = "Type"
+dashboard.section.footer.opts.hl = ""
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 

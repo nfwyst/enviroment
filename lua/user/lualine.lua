@@ -27,7 +27,7 @@ local diff = {
 local mode = {
 	"mode",
 	fmt = function(str)
-		return "-- " .. str .. " --"
+		return "--" .. str .. "--"
 	end,
 }
 
@@ -59,7 +59,7 @@ local progress = function()
 end
 
 local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+	return "space:" .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
 lualine.setup({
@@ -74,8 +74,7 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = {},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
+		lualine_c = { { 'filename', path = 3 } },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
 		lualine_z = { progress },

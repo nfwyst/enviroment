@@ -33,5 +33,15 @@ vim.cmd [[
     autocmd!
     autocmd BufWinEnter * normal zx | zR
   augroup end
+  
+  if executable("node")
+    augroup _coderun
+      autocmd bufread,bufnewfile *.js noremap <leader>r :% w !node<enter>
+    augroup end
+  else
+    augroup _coderun
+      autocmd bufread,bufnewfile *.js noremap <leader>r :echo "node is not installed"
+    augroup end
+  endif
 ]]
 

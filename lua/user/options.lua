@@ -34,6 +34,8 @@ local options = {
   ch = 0,                                  -- automatically hide and show command line
   spell = true,                            -- enable builtin spell check that work with treesitter, so it can do well in comment spell checking
   laststatus = 3,                          -- enable global status line
+  foldmethod = "expr",                     -- gives the fold level from foldexpr for a line
+  foldexpr = "nvim_treesitter#foldexpr()", -- enable treesitter experimental fold level,
 }
 
 vim.opt.shortmess:append "c"

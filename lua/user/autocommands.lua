@@ -28,5 +28,10 @@ vim.cmd [[
     autocmd!
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
+
+  augroup _tsfold
+    autocmd!
+    autocmd BufWinEnter * normal zx | zR
+  augroup end
 ]]
 

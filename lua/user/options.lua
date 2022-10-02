@@ -32,6 +32,7 @@ local options = {
   inccommand = "split",                    -- show preview in split window when in %s mode to replace something
   lazyredraw = true,                       -- don't redraw while executing macros (good performance config)
   title = true,                            -- show title
+  ch = 0,                                  -- automatically hide and show command line
 }
 
 vim.opt.shortmess:append "c"

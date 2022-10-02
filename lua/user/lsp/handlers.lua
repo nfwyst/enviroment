@@ -69,8 +69,8 @@ M.on_attach = function(client, _)
 	-- vim.notify(client.name .. " starting...")
   local disable_formatting_lsp = { "tsserver", "ccls", "sumneko_lua" }
 	if contains(disable_formatting_lsp, client.name) then
-		client.resolved_capabilities.document_formatting = false
-		client.resolved_capabilities.document_range_formatting = false
+		client.server_capabilities.document_formatting = false
+		client.server_capabilities.document_range_formatting = false
 	end
 	lsp_highlight_document(client)
 end

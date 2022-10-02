@@ -32,6 +32,7 @@ local options = {
   lazyredraw = true,                       -- don't redraw while executing macros (good performance config)
   title = true,                            -- show title
   ch = 0,                                  -- automatically hide and show command line
+  spell = true,                            -- enable builtin spell check that work with treesitter, so it can do well in comment spell checking
 }
 
 vim.opt.shortmess:append "c"

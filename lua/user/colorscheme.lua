@@ -4,7 +4,7 @@ vim.g.NeoSolarized_diffmode = 'normal' -- low, normal, high
 vim.g.NeoSolarized_termtrans = 1 -- 0(default) or 1 -> Transparency
 vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show backgroung in LineNr
 vim.g.Illuminate_useDeprecated = 1 -- Force old version illuminate behavior
-vim.g.Illuminate_ftblacklist = { 'NvimTree', 'alpha' } -- The filetype that illuminate will not work
+vim.g.Illuminate_ftblacklist = { 'NvimTree', 'alpha', 'Outline' } -- The filetype that illuminate will not work
 
 vim.cmd [[
 try

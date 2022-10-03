@@ -84,7 +84,7 @@ local gmappings = {
   ["D"] = { "<cmd>lua vim.lsp.buf.declaration()<cr>", "Go to declaration" },
   ["d"] = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go to definition" },
   ["I"] = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Go to implementation" },
-  ["r"] = { ":Telescope lsp_references<cr>", "Go to references" },
+  ["r"] = { "<cmd>Telescope lsp_references<cr>", "Go to references" },
   ["l"] = { '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<cr>', "Show diagnostic" },
   ["k"] = { '<cmd>lua vim.lsp.buf.hover()<cr>', "Show hover info" },
   ["K"] = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', "Show signature help" },
@@ -108,6 +108,7 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["r"] = "Code runner",
+  ["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
 
   p = {
     name = "Packer",

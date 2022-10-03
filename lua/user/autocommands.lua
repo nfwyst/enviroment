@@ -35,6 +35,7 @@ vim.cmd [[
   augroup end
 
   augroup _outlines
+    autocmd!
     autocmd FileType Outline set nospell
   augroup end
   

@@ -33,6 +33,10 @@ vim.cmd [[
     autocmd!
     autocmd BufWinEnter * normal zx | zR
   augroup end
+
+  augroup _outlines
+    autocmd FileType Outline set nospell
+  augroup end
   
   if executable("node")
     augroup _coderun

@@ -55,3 +55,5 @@ keymap("v", "p", '"_dP', opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
+-- Enable lsp signature_help in insert_mode --
+keymap("i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)

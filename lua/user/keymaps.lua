@@ -16,6 +16,10 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- make cursor center always --
+keymap("n", "j", "jzz", opts)
+keymap("n", "k", "kzz", opts)
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)

@@ -23,6 +23,7 @@ augroup BgHighlight
   highlight ColorColumn guibg=238
   highlight CursorLine gui=bold cterm=bold
   highlight IlluminatedWordText gui=bold cterm=bold guibg=#002b36
+  highlight LspReferenceRead cterm=bold gui=bold
 augroup END
 ]]
 

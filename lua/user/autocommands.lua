@@ -48,5 +48,10 @@ vim.cmd [[
       autocmd bufread,bufnewfile *.js noremap <leader>r :echo "node is not installed"
     augroup end
   endif
+
+  augroup _last_position
+    autocmd!
+    autocmd BufWinEnter * normal '"
+  augroup end
 ]]
 

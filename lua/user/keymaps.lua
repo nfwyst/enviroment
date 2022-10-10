@@ -19,6 +19,16 @@ vim.g.maplocalleader = " "
 -- make cursor center always --
 keymap("n", "j", "jzz", opts)
 keymap("n", "k", "kzz", opts)
+keymap("n", "za", "zazz", opts)
+keymap("n", "zA", "zAzz", opts)
+keymap("n", "zc", "zczz", opts)
+keymap("n", "zC", "zCzz", opts)
+keymap("n", "zM", "zMzz", opts)
+keymap("n", "zm", "zmzz", opts)
+keymap("n", "zo", "zozz", opts)
+keymap("n", "zO", "zOzz", opts)
+keymap("n", "zR", "zRzz", opts)
+keymap("n", "zr", "zrzz", opts)
 
 -- Normal --
 -- Better window navigation

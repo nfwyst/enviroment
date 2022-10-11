@@ -110,6 +110,7 @@ local mappings = {
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
   ["r"] = "Code runner",
   ["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
+  ["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua entry file" },
 
   p = {
     name = "Packer",

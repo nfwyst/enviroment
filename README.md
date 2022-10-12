@@ -33,10 +33,10 @@ git clone https://github.com/nfwyst/enviroment.git ~/.config/nvim
 2. file/symbol/command/help/register search
 3. completion, diagnostic, format
 4. git integrates
-5. debug(TODO)
+5. debug
 6. navigation
 7. toggle terminal in vim
 8. outline viewer
-9. window/buffer control
+9. window/buffer/tab control
 10. marks, text objects
 11. folds, spelling etc...

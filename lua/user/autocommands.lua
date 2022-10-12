@@ -53,5 +53,9 @@ vim.cmd [[
     autocmd!
     autocmd BufWinEnter * normal '"
   augroup end
+
+  augroup _remove_whitespace
+    autocmd BufWritePre * :%s/\s\+$//e
+  augroup end
 ]]
 

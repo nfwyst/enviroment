@@ -27,7 +27,16 @@ git clone https://github.com/nfwyst/enviroment.git ~/.config/nvim
 2. run `:LspInstallInfo` in command mode to install language server protocol manually, it give us language specific completion and diagnostic
 3. run `:TSInstall` in command mode to install treesitter, it give us a tons of context syntax highlight support, indent, folds, etc...
 
-# Todo
+# Features
 
-- testing integrating
-- debug integrating
+1. file Explorer
+2. file/symbol/command/help/register search
+3. completion, diagnostic, format
+4. git integrates
+5. debug(TODO)
+6. navigation
+7. toggle terminal in vim
+8. outline viewer
+9. window/buffer control
+10. marks, text objects
+11. folds, spelling etc...

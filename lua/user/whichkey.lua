@@ -88,6 +88,8 @@ local gmappings = {
   ["l"] = { '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<cr>', "Show diagnostic" },
   ["k"] = { '<cmd>lua vim.lsp.buf.hover()<cr>', "Show hover info" },
   ["K"] = { '<cmd>lua vim.lsp.buf.signature_help()<cr>', "Show signature help" },
+  ["o"] = { '<c-o>', "Jump back" },
+  ["t"] = { '<c-t>', "Go back" },
 }
 
 local mappings = {

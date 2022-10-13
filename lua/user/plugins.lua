@@ -59,8 +59,8 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
-  use("Tsuzat/NeoSolarized.nvim")
-  use("shaunsingh/solarized.nvim")
+	use("Tsuzat/NeoSolarized.nvim")
+	use("shaunsingh/solarized.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -69,7 +69,7 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
-  use({ 'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp' })
+	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -79,8 +79,8 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-  use("RRethy/vim-illuminate") -- automatically highlighting other uses of the word under the cursor using lsp
-  use("simrat39/symbols-outline.nvim") -- enable outline based on lsp
+	use("RRethy/vim-illuminate") -- automatically highlighting other uses of the word under the cursor using lsp
+	use("simrat39/symbols-outline.nvim") -- enable outline based on lsp
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -91,8 +91,16 @@ return packer.startup(function(use)
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 
-  -- Debug
-  use("mfussenegger/nvim-dap")
+	-- Debug
+	use("mfussenegger/nvim-dap")
+	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
+	use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile" })
+	use({
+		"nvim-telescope/telescope-dap.nvim",
+		requires = { "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
+	})
+	use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" } })
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

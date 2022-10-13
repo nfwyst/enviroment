@@ -1,61 +1,71 @@
+local dvj_ok, dvj = pcall(require, "dap-vscode-js")
+local dvt_ok, dvt = pcall(require, "nvim-dap-virtual-text")
+local ui_ok, ui = pcall(require, "dapui")
 local status_ok, dap = pcall(require, "dap")
 if not status_ok then
 	return
 end
 
-local status, dap_utils = pcall(require, "dap.utils")
-if not status then
+local cwd = vim.fn.getcwd()
+local before_listener = dap.listeners.before
+local signs = {
+	{ name = "DapBreakpoint", text = "🟥" },
+	{ name = "DapStopped", text = "🟦" },
+}
+for _, sign in ipairs(signs) do
+	vim.fn.sign_define(sign.name, { text = sign.text, numhl = "" })
+end
+
+if dvt_ok then
+	dvt.setup()
+end
+
+if ui_ok then
+	ui.setup()
+	local function close_ui()
+		ui.close()
+	end
+
+	before_listener.event_terminated["dapui_config"] = close_ui
+	before_listener.event_exited["dapui_config"] = close_ui
+end
+
+if not dvj_ok then
 	return
 end
 
-dap.adapters.js = {
-	type = "executable",
-	command = "node",
-	args = { os.getenv("HOME") .. ".local/share/nvim/dev/microsoft/vscode-js-debug/out/src/debugServer.js" },
-}
+dvj.setup({
+	node_path = "/usr/local/bin/node",
+	debugger_path = "~/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
+	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+})
 
-dap.configurations.javascript = {
-	{
-		name = "Launch",
-		type = "js",
+function _G.debug_node()
+	print("attaching node")
+	dap.run({
+		type = "pwa-node",
+		request = "attach",
+		name = "Attach",
+		processId = require("dap.utils").pick_process,
+		cwd = cwd,
+	})
+end
+
+function _G.debug_jest()
+	print("starting jest")
+	dap.run({
+		type = "pwa-node",
 		request = "launch",
-		program = "${file}",
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = "inspector",
+		name = "Debug Jest Tests",
+		-- trace = true, -- include debugger info
+		runtimeExecutable = "node",
+		runtimeArgs = {
+			"./node_modules/jest/bin/jest.js",
+			"--runInBand",
+		},
+		rootPath = cwd,
+		cwd = cwd,
 		console = "integratedTerminal",
-	},
-	{
-		-- For this to work you need to make sure the node process is started with the `--inspect` flag.
-		name = "Attach to process",
-		type = "js",
-		request = "attach",
-		processId = dap_utils.pick_process,
-	},
-}
-
-dap.configurations.javascriptreact = { -- change this to javascript if needed
-	{
-		type = "js",
-		request = "attach",
-		program = "${file}",
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = "inspector",
-		port = 9222,
-		webRoot = "${workspaceFolder}",
-	},
-}
-
-dap.configurations.typescriptreact = { -- change to typescript if needed
-	{
-		type = "js",
-		request = "attach",
-		program = "${file}",
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = "inspector",
-		port = 9222,
-		webRoot = "${workspaceFolder}",
-	},
-}
+		internalConsoleOptions = "neverOpen",
+	})
+end

@@ -36,7 +36,6 @@ end
 
 dvj.setup({
 	node_path = "/usr/local/bin/node",
-	debugger_path = "~/.local/share/nvim/site/pack/packer/opt/vscode-js-debug",
 	adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 })
 

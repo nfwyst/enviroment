@@ -16,20 +16,6 @@ vim.g.maplocalleader = " "
 --   term_mode = "t",
 --   command_mode = "c",
 
--- make cursor center always --
-keymap("n", "j", "jzz", opts)
-keymap("n", "k", "kzz", opts)
-keymap("n", "za", "zazz", opts)
-keymap("n", "zA", "zAzz", opts)
-keymap("n", "zc", "zczz", opts)
-keymap("n", "zC", "zCzz", opts)
-keymap("n", "zM", "zMzz", opts)
-keymap("n", "zm", "zmzz", opts)
-keymap("n", "zo", "zozz", opts)
-keymap("n", "zO", "zOzz", opts)
-keymap("n", "zR", "zRzz", opts)
-keymap("n", "zr", "zrzz", opts)
-
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -52,7 +38,7 @@ keymap("n", "J", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "K", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
--- Press jk fast to exit insert mode 
+-- Press jk fast to exit insert mode
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --

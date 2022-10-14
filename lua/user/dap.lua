@@ -47,6 +47,8 @@ function _G.debug_node()
 		name = "Attach",
 		processId = require("dap.utils").pick_process,
 		cwd = cwd,
+		sourceMaps = true,
+		skipFiles = { "<node_internals>/**/*.js" },
 	})
 end
 
@@ -66,5 +68,7 @@ function _G.debug_jest()
 		cwd = cwd,
 		console = "integratedTerminal",
 		internalConsoleOptions = "neverOpen",
+		sourceMaps = true,
+		skipFiles = { "<node_internals>/**/*.js" },
 	})
 end

@@ -112,7 +112,7 @@ local mappings = {
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 	["r"] = "Code runner",
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
-	["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua entry file" },
+	["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua" },
 
 	d = {
 		name = "Debug",
@@ -152,6 +152,8 @@ local mappings = {
 		s = { "<cmd>PackerSync<cr>", "Sync" },
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
+		t = { "<cmd>TSPlaygroundToggle<cr>", "TS playground" },
+		h = { "<cmd>TSHighlightCapturesUnderCursor<cr>", "Highlight group capture" },
 	},
 
 	g = {

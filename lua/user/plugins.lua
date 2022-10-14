@@ -88,6 +88,9 @@ return packer.startup(function(use)
 	-- Treesitter
 	use("nvim-treesitter/nvim-treesitter")
 
+	-- Treesitter Better Syntax Highlighting
+	use({ "David-Kunz/markid", requires = { "nvim-treesitter/nvim-treesitter" } })
+
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 

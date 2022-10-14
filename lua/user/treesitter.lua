@@ -13,6 +13,7 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
+	markid = { enable = true },
 	indent = { enable = true, disable = { "python", "css" } },
-  context_commentstring = { enable = true, enable_autocmd = false },
+	context_commentstring = { enable = true, enable_autocmd = false },
 })

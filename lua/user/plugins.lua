@@ -86,7 +86,10 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim")
 
 	-- Treesitter
-	use("nvim-treesitter/nvim-treesitter")
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+
+	-- Treesitter Playground
+	use({ "nvim-treesitter/playground", requires = { "nvim-treesitter/nvim-treesitter" }, run = ":TSInstall query" })
 
 	-- Treesitter Better Syntax Highlighting
 	use({ "David-Kunz/markid", requires = { "nvim-treesitter/nvim-treesitter" } })

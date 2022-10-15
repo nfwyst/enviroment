@@ -113,6 +113,7 @@ local mappings = {
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 	["r"] = "Code runner",
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
+	["O"] = { "<cmd>lua vim.fn.system({'open', vim.fn.expand('%')})<cr>", "Open current file" },
 	["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua" },
 
 	d = {

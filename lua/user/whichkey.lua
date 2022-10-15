@@ -99,6 +99,7 @@ local mappings = {
 		"Buffers",
 	},
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+	["E"] = { "<cmd>NvimTreeFindFile<cr>", "Show file in explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["x"] = { "<cmd>x<cr>", "Save and quit" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },

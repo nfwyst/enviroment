@@ -108,6 +108,9 @@ return packer.startup(function(use)
 	use({ "theHamsta/nvim-dap-virtual-text", requires = { "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" } })
 	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
+	-- Color highlighter
+	use("norcalli/nvim-colorizer.lua")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

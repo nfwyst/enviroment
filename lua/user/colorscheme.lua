@@ -21,7 +21,6 @@ augroup BgHighlight
   highlight NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
   highlight Pmenu ctermbg=NONE guibg=NONE
   highlight ColorColumn guibg=238
-  highlight CursorLine gui=bold cterm=bold
   highlight IlluminatedWordText gui=bold cterm=bold guibg=#002b36
   highlight LspReferenceRead cterm=bold gui=bold
 augroup END

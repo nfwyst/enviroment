@@ -1,8 +1,8 @@
 vim.cmd [[
   augroup _general_settings
     autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
+    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
+    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end
@@ -21,7 +21,7 @@ vim.cmd [[
 
   augroup _auto_resize
     autocmd!
-    autocmd VimResized * tabdo wincmd = 
+    autocmd VimResized * tabdo wincmd =
   augroup end
 
   augroup _alpha
@@ -31,14 +31,14 @@ vim.cmd [[
 
   augroup _tsfold
     autocmd!
-    autocmd BufWinEnter * normal zx | zR
+    autocmd BufWinEnter * normal zx
   augroup end
 
   augroup _outlines
     autocmd!
     autocmd FileType Outline set nospell
   augroup end
-  
+
   if executable("node")
     augroup _coderun
       autocmd bufread,bufnewfile *.js noremap <leader>r :% w !node<enter>

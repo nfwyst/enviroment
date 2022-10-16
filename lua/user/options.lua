@@ -37,6 +37,7 @@ local options = {
   laststatus = 3,                          -- enable global status line
   foldmethod = "expr",                     -- gives the fold level from foldexpr for a line
   foldexpr = "nvim_treesitter#foldexpr()", -- enable treesitter experimental fold level,
+  foldlevel = 20                           -- fix fold,
 }
 
 vim.opt.shortmess:append "c"

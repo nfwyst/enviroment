@@ -45,6 +45,8 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+_G.stop_jump = false
+
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -69,8 +71,9 @@ cmp.setup {
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expandable() then
+        _G.stop_jump = false
         luasnip.expand()
-      elseif luasnip.expand_or_jumpable() then
+      elseif luasnip.expand_or_jumpable() and not _G.stop_jump then
         luasnip.expand_or_jump()
       elseif check_backspace() then
         fallback()
@@ -84,7 +87,7 @@ cmp.setup {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
+      elseif luasnip.jumpable(-1) and not _G.stop_jump then
         luasnip.jump(-1)
       else
         fallback()

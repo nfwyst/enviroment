@@ -39,7 +39,7 @@ keymap("n", "K", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<cmd>lua _G.stop_jump = true; vim.cmd('stopinsert')<cr>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -57,4 +57,3 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Enable lsp signature_help in insert/normal mode --
 keymap("i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-keymap("n", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)

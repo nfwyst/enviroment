@@ -3,4 +3,6 @@ if not status_ok then
   return
 end
 
-colorizer.setup()
+colorizer.setup(nil, {
+  RRGGBBAA = true;
+})

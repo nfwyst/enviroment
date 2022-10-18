@@ -1,12 +1,14 @@
+vim.api.nvim_exec("language en_US", false)
+
 vim.g.NeoSolarized_italics = 1 -- 0 or 1
-vim.g.NeoSolarized_visibility = 'normal' -- low, normal, high
-vim.g.NeoSolarized_diffmode = 'normal' -- low, normal, high
+vim.g.NeoSolarized_visibility = "normal" -- low, normal, high
+vim.g.NeoSolarized_diffmode = "normal" -- low, normal, high
 vim.g.NeoSolarized_termtrans = 1 -- 0(default) or 1 -> Transparency
 vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show backgroung in LineNr
 vim.g.Illuminate_useDeprecated = 1 -- Force old version illuminate behavior
-vim.g.Illuminate_ftblacklist = { 'NvimTree', 'alpha', 'Outline' } -- The filetype that illuminate will not work
+vim.g.Illuminate_ftblacklist = { "NvimTree", "alpha", "Outline" } -- The filetype that illuminate will not work
 
-vim.cmd [[
+vim.cmd([[
 try
   colorscheme NeoSolarized
 catch /^Vim\%((\a\+)\)\=:E185/
@@ -24,5 +26,4 @@ augroup BgHighlight
   highlight IlluminatedWordText gui=bold cterm=bold guibg=#002b36
   highlight LspReferenceRead cterm=bold gui=bold
 augroup END
-]]
-
+]])

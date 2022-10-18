@@ -70,7 +70,7 @@ cmp.setup {
       if luasnip.expandable() then
         _G.stop_jump = false
       end
-      if not require('cmp').confirm({ select = true }) then
+      if not cmp.confirm({ select = true }) then
         fallback()
       end
     end,

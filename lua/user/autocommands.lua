@@ -3,7 +3,7 @@ vim.cmd [[
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
-    autocmd BufWinEnter * :set formatoptions-=cro
+    autocmd BufWinEnter * silent!set formatoptions-=cro
     autocmd FileType qf set nobuflisted
   augroup end
 
@@ -31,7 +31,7 @@ vim.cmd [[
 
   augroup _tsfold
     autocmd!
-    autocmd BufWinEnter * normal zx
+    autocmd BufWinEnter * silent!normal zx
   augroup end
 
   augroup _outlines
@@ -51,7 +51,7 @@ vim.cmd [[
 
   augroup _last_position
     autocmd!
-    autocmd BufWinEnter * normal '"
+    autocmd BufWinEnter * silent!normal '"
   augroup end
 
   augroup _remove_whitespace

@@ -4,5 +4,6 @@ if not status_ok then
 end
 
 colorizer.setup(nil, {
-  RRGGBBAA = true;
+  RRGGBBAA = true,
+  rgb_fn = true,
 })

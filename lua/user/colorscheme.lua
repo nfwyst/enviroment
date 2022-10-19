@@ -8,9 +8,20 @@ vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show backgroung in LineN
 vim.g.Illuminate_useDeprecated = 1 -- Force old version illuminate behavior
 vim.g.Illuminate_ftblacklist = { "NvimTree", "alpha", "Outline" } -- The filetype that illuminate will not work
 
+local status_ok, tokyonight = pcall(require, "tokyonight")
+if status_ok then
+  tokyonight.setup({
+    transparent = true,
+    styles = {
+      floats = "transparent",
+      sidebars = "transparent",
+    }
+  })
+end
+
 vim.cmd([[
 try
-  colorscheme NeoSolarized
+  colorscheme tokyonight "NeoSolarized
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark

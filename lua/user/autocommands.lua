@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
@@ -41,10 +41,12 @@ vim.cmd [[
 
   if executable("node")
     augroup _coderun
+      autocmd!
       autocmd bufread,bufnewfile *.js noremap <leader>r :% w !node<enter>
     augroup end
   else
     augroup _coderun
+      autocmd!
       autocmd bufread,bufnewfile *.js noremap <leader>r :echo "node is not installed"
     augroup end
   endif
@@ -54,8 +56,14 @@ vim.cmd [[
     autocmd BufWinEnter * silent!normal '"
   augroup end
 
+  function! _remove_trailing_whitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+  endfun
   augroup _remove_whitespace
-    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd!
+    autocmd BufWritePre * :call _remove_trailing_whitespaces()
   augroup end
-]]
-
+]])

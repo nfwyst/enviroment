@@ -1,11 +1,14 @@
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
+local istatus_ok, install = pcall(require, "nvim-treesitter.install")
+if not status_ok or not istatus_ok then
 	return
 end
 
+install.prefer_git = false
+
 configs.setup({
 	ensure_installed = "all", -- one of "all" or a list of languages
-	ignore_install = { "phpdoc", "org", "norg", "pascal", "c_sharp", "java", "kotlin", "php", "erlang", "elixir", "julia", "fish", "fortran", "perl", "ruby", "toml", "swift" }, -- List of parsers to ignore installing
+	ignore_install = { "phpdoc", "org", "norg", "pascal", "c_sharp", "java", "kotlin", "php", "erlang", "elixir", "julia", "fish", "fortran", "perl", "ruby", "toml", "swift", "fusion" }, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		disable = { "css" }, -- list of language that will be disabled

@@ -5,7 +5,7 @@ end
 
 configs.setup({
 	ensure_installed = "all", -- one of "all" or a list of languages
-	ignore_install = { "phpdoc" }, -- List of parsers to ignore installing
+	ignore_install = { "phpdoc", "org", "norg", "pascal", "c_sharp", "java", "kotlin", "php", "erlang", "elixir", "julia", "fish", "fortran", "perl", "ruby", "toml", "swift" }, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		disable = { "css" }, -- list of language that will be disabled

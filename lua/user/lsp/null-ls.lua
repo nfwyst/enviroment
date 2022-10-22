@@ -25,4 +25,3 @@ null_ls.setup({
 		diagnostics.eslint,
 	},
 })
-

@@ -1,5 +1,5 @@
 local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok or is_large_file then
+if not status_ok then
   return
 end
 
@@ -33,7 +33,7 @@ gitsigns.setup {
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default
-  max_file_length = 40000,
+  max_file_length = max_file_length,
   preview_config = {
     -- Options passed to nvim_open_win
     border = "single",

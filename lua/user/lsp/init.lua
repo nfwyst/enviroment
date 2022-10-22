@@ -1,5 +1,5 @@
 local status_ok, _ = pcall(require, "lspconfig")
-if not status_ok or is_large_file then
+if not status_ok then
   return
 end
 

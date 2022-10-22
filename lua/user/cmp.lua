@@ -1,5 +1,5 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok or is_large_file then
+if not cmp_status_ok then
   return
 end
 
@@ -47,7 +47,14 @@ local kind_icons = {
 
 _G.stop_jump = false
 
+local filetype_exclude = {
+  "TelescopePrompt"
+}
+
 cmp.setup {
+  enabled = function()
+    return not _IS_LARGE_FILE(0) and not contains(filetype_exclude, vim.bo.filetype)
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- For `luasnip` users.

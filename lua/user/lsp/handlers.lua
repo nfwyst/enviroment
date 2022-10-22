@@ -55,7 +55,7 @@ local function lsp_highlight_document(client)
 	-- end
 end
 
-local function contains(list, value)
+function _G.contains(list, value)
   for _, v in ipairs(list) do
     if v == value then
       return true

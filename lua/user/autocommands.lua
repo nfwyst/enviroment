@@ -66,4 +66,9 @@ vim.cmd([[
     autocmd!
     autocmd BufWritePre * :call _remove_trailing_whitespaces()
   augroup end
+
+  augroup _large_file
+    autocmd!
+    autocmd BufReadPre * silent!lua _CHECK_LARGE_FILE()
+  augroup end
 ]])

@@ -1,5 +1,5 @@
 local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
+if not cmp_status_ok or is_large_file then
   return
 end
 

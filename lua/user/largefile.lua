@@ -1,5 +1,6 @@
 local autopairs_status_ok, npairs = pcall(require, "nvim-autopairs")
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+local indent_status_ok, indent = pcall(require, "indent_blankline.commands")
 
 local options_for_large_file = {
   undofile = false,
@@ -57,24 +58,20 @@ function _CHECK_LARGE_FILE()
       vim.opt_local[k] = v
     end
 
-    vim.api.nvim_exec("IndentBlanklineDisable", false)
     vim.api.nvim_exec("ColorizerDetachFromBuffer", false)
 
+    if indent_status_ok then
+      indent.disable(false)
+    end
+
     if autopairs_status_ok then
-      npairs.disable()
+      npairs.set_buf_rule(nil, 0)
     end
 
     if null_ls_status_ok then
       null_ls.disable({ "eslint" })
     end
   else
-    vim.api.nvim_exec("IndentBlanklineEnable", false)
-    vim.api.nvim_exec("ColorizerAttachToBuffer", false)
-
-    if autopairs_status_ok then
-      npairs.enable()
-    end
-
     if null_ls_status_ok then
       null_ls.enable({ "eslint" })
     end

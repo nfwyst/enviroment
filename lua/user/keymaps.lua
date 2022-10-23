@@ -39,7 +39,7 @@ keymap("n", "K", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Insert --
 -- Press jk fast to exit insert mode
-keymap("i", "jk", "<cmd>lua _G.stop_jump = true; vim.cmd('stopinsert')<cr>", opts)
+keymap("i", "jk", "<cmd>silent!lua require('luasnip').unlink_current(); vim.cmd('stopinsert')<cr>", opts)
 
 -- Visual --
 -- Stay in indent mode

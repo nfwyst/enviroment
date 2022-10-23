@@ -55,15 +55,6 @@ local function lsp_highlight_document(client)
 	-- end
 end
 
-function _G.contains(list, value)
-  for _, v in ipairs(list) do
-    if v == value then
-      return true
-    end
-  end
-  return false
-end
-
 M.on_attach = function(client, _)
 	-- vim.notify(client.name .. " starting...")
   local disable_formatting_lsp = { "tsserver", "ccls", "sumneko_lua" }

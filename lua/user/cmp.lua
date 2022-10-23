@@ -45,8 +45,6 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-_G.stop_jump = false
-
 local filetype_exclude = {
   "TelescopePrompt"
 }
@@ -73,22 +71,12 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = function(fallback)
-      if luasnip.expandable() then
-        _G.stop_jump = false
-      end
-      if not cmp.confirm({ select = true }) then
-        fallback()
-      end
-    end,
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expandable() then
-        _G.stop_jump = false
-        luasnip.expand()
-      elseif luasnip.expand_or_jumpable() and not _G.stop_jump then
-        luasnip.expand_or_jump()
+      elseif luasnip.jumpable(1) then
+        luasnip.jump(1)
       elseif check_backspace() then
         fallback()
       else
@@ -101,7 +89,7 @@ cmp.setup {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) and not _G.stop_jump then
+      elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else
         fallback()

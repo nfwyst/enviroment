@@ -69,6 +69,6 @@ vim.cmd([[
 
   augroup _large_file
     autocmd!
-    autocmd BufWinEnter * silent!lua _CHECK_LARGE_FILE()
+    autocmd BufReadPre,BufWinEnter * silent!lua _CHECK_LARGE_FILE()
   augroup end
 ]])

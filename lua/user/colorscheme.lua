@@ -1,22 +1,37 @@
 vim.api.nvim_exec("language en_US", false)
 
-vim.g.NeoSolarized_italics = 1 -- 0 or 1
-vim.g.NeoSolarized_visibility = "normal" -- low, normal, high
-vim.g.NeoSolarized_diffmode = "normal" -- low, normal, high
-vim.g.NeoSolarized_termtrans = 1 -- 0(default) or 1 -> Transparency
+local ns_status_ok, NeoSolarized = pcall(require, "NeoSolarized")
+if ns_status_ok then
+	NeoSolarized.setup({
+		style = "dark",
+		transparent = true,
+		terminal_colors = true,
+		enable_italics = true,
+		styles = {
+			comments = { italic = true },
+			keywords = { italic = false },
+			functions = { bold = true },
+			variables = {},
+			string = { italic = true },
+			underline = false,
+			undercurl = false,
+		},
+	})
+end
+
 vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show backgroung in LineNr
 vim.g.Illuminate_useDeprecated = 1 -- Force old version illuminate behavior
 vim.g.Illuminate_ftblacklist = { "NvimTree", "alpha", "Outline" } -- The filetype that illuminate will not work
 
 local status_ok, tokyonight = pcall(require, "tokyonight")
 if status_ok then
-  tokyonight.setup({
-    transparent = true,
-    styles = {
-      floats = "transparent",
-      sidebars = "transparent",
-    }
-  })
+	tokyonight.setup({
+		transparent = true,
+		styles = {
+			floats = "transparent",
+			sidebars = "transparent",
+		},
+	})
 end
 
 vim.cmd([[

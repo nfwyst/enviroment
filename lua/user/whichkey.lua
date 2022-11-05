@@ -192,7 +192,7 @@ local mappings = {
 			"<cmd>Telescope diagnostics<cr>",
 			"Workspace Diagnostics",
 		},
-		f = { "<cmd>lua vim.lsp.buf.format{async=false}; vim.cmd('normal! zx')<cr>", "Format" },
+		f = { "<cmd>lua vim.lsp.buf.format{async=false,timeout_ms=5000}; vim.cmd('normal! zx')<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		j = {

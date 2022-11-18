@@ -8,11 +8,18 @@ if not snip_status_ok then
   return
 end
 
-require("luasnip/loaders/from_vscode").lazy_load()
+local from_vscode = require("luasnip/loaders/from_vscode")
+from_vscode.lazy_load()
+
+local fn = vim.fn
+local snippets_path = fn.stdpath("data") .. "/custom-snippets"
+if fn.empty(fn.glob(snippets_path)) <= 0 then
+  from_vscode.lazy_load({ paths = { [1] = snippets_path } }) -- Load snippets from snippets_path
+end
 
 local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  local col = fn.col "." - 1
+  return col == 0 or fn.getline("."):sub(col, col):match "%s"
 end
 
 --   פּ ﯟ   some other good icons

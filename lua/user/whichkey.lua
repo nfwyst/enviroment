@@ -115,6 +115,7 @@ local mappings = {
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
 	["O"] = { "<cmd>lua vim.fn.system({'open', vim.fn.expand('%')})<cr>", "Open current file" },
 	["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua" },
+	["C"] = { "<cmd>e " .. vim.fn.stdpath("data") .. "/custom-snippets/package.json<cr>", "open custom snippets" },
 
 	d = {
 		name = "Debug",

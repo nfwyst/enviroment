@@ -41,7 +41,8 @@ git clone https://github.com/nfwyst/enviroment.git ~/.config/nvim
 8. outline viewer
 9. window/buffer/tab control
 10. marks, text objects
-11. folds, spelling etc...
+11. find and replace all
+12. folds, spelling etc...
 
 # Custom snippets
 
@@ -83,3 +84,10 @@ then you can create your code template, for example in javascript.json:
   }
 }
 ```
+
+# find and replace all
+
+you can find and replace all with telescope and quickfix list, here is the steps:
+1. press ctrl+q add the search result to the quickfix list above telescope view
+2. enter `:cdo s/what you want to replace/what you want to be/g | update`, update will write the buffer to disk after replace finished.
+3. use `cfdo bd` to delete all buffers.

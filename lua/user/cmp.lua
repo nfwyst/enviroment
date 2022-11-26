@@ -65,7 +65,7 @@ local kind_icons = {
 	EnumMember = "",
 	Constant = "",
 	Struct = "",
-	Event = "",
+	Event = "ﳅ",
 	Operator = "",
 	TypeParameter = "",
 }
@@ -141,13 +141,14 @@ cmp.setup({
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 
 			if entry.source.name == "cmp_tabnine" then
-				local detail = (entry.completion_item.data or {}).detail
+				local data = entry.completion_item.data or {}
+				local detail = data.detail
 				vim_item.kind = ""
 				if detail and detail:find(".*%%.*") then
 					vim_item.kind = vim_item.kind .. " " .. detail
 				end
 
-				if (entry.completion_item.data or {}).multiline then
+				if data.multiline then
 					vim_item.kind = vim_item.kind .. " " .. "[ML]"
 				end
 			end
@@ -173,7 +174,7 @@ cmp.setup({
 		},
 	},
 	experimental = {
-		ghost_text = true,
+		ghost_text = false,
 		native_menu = false,
 	},
 	sorting = sorting,

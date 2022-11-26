@@ -44,9 +44,6 @@ endtry
 
 augroup BgHighlight
   autocmd!
-  highlight FloatBorder guibg=NONE ctermbg=NONE  " Removes the border of float menu (LSP and Autocompletion uses it)
-  highlight link NormalFloat Normal
-  highlight NormalFloat ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
   highlight Pmenu ctermbg=NONE guibg=NONE
   highlight ColorColumn guibg=238
   highlight IlluminatedWordText gui=bold cterm=bold guibg=#002b36

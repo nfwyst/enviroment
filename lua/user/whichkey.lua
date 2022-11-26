@@ -117,6 +117,7 @@ local mappings = {
 	["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua" },
 	["C"] = { "<cmd>e " .. vim.fn.stdpath("data") .. "/custom-snippets/package.json<cr>", "open custom snippets" },
 	["T"] = { "<cmd>CmpTabnineHub<cr>", "open tabnine hub" },
+	["n"] = { "<cmd>set ignorecase!<cr>", "toggle case sensitive" },
 
 	d = {
 		name = "Debug",

@@ -102,7 +102,11 @@ return packer.startup(function(use)
 	-- Debug
 	use("mfussenegger/nvim-dap")
 	use({ "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } })
-	use({ "microsoft/vscode-js-debug", opt = true, run = "npm install --legacy-peer-deps && npm run compile && git restore ." })
+	use({
+		"microsoft/vscode-js-debug",
+		opt = true,
+		run = "npm install --legacy-peer-deps && npm run compile && git restore .",
+	})
 	use({
 		"nvim-telescope/telescope-dap.nvim",
 		requires = { "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap", "nvim-treesitter/nvim-treesitter" },
@@ -112,6 +116,9 @@ return packer.startup(function(use)
 
 	-- Color highlighter
 	use("norcalli/nvim-colorizer.lua")
+
+	-- copilot
+	use("github/copilot.vim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

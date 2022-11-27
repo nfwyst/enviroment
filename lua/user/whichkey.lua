@@ -114,10 +114,19 @@ local mappings = {
 	["r"] = "Code runner",
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
 	["O"] = { "<cmd>lua vim.fn.system({'open', vim.fn.expand('%')})<cr>", "Open current file" },
-	["v"] = { "<cmd>e $MYVIMRC<cr>", "open init.lua" },
-	["C"] = { "<cmd>e " .. vim.fn.stdpath("data") .. "/custom-snippets/package.json<cr>", "open custom snippets" },
-	["T"] = { "<cmd>CmpTabnineHub<cr>", "open tabnine hub" },
-	["n"] = { "<cmd>set ignorecase!<cr>", "toggle case sensitive" },
+	["v"] = { "<cmd>e $MYVIMRC<cr>", "Open init.lua" },
+	["S"] = { "<cmd>e " .. vim.fn.stdpath("data") .. "/custom-snippets/package.json<cr>", "Open custom snippets" },
+	["T"] = { "<cmd>CmpTabnineHub<cr>", "Open tabnine hub" },
+	["n"] = { "<cmd>set ignorecase!<cr>", "Toggle case sensitive" },
+
+	C = {
+		name = "Copilot",
+		d = { "<cmd>Copilot disable<cr>", "Disable copilot" },
+		e = { "<cmd>Copilot enable<cr>", "Enable copilot" },
+		i = { "<cmd>Copilot setup<cr>", "Authenticate and enable GitHub Copilot" },
+		s = { "<cmd>Copilot status<cr>", "Check copilot status" },
+		p = { "<cmd>Copilot panel<cr>", "Open more completions" },
+	},
 
 	d = {
 		name = "Debug",

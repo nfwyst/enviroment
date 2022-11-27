@@ -9,7 +9,7 @@ if not snip_status_ok then
 end
 
 local tabnine_compare_status_ok, tabnine_compare = pcall(require, "cmp_tabnine.compare")
-local compare = require("cmp.config.compare")
+local compare = cmp.config.compare
 local sorting = {
 	priority_weight = 2,
 	comparators = {
@@ -169,6 +169,12 @@ cmp.setup({
 		select = false,
 	},
 	window = {
+		completion = {
+			border = { "", "", "", "│", "╯", "─", "╰", "│" },
+			side_padding = 0,
+			col_offset = 1,
+			scrollbar = false,
+		},
 		documentation = {
 			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		},

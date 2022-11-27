@@ -274,5 +274,10 @@ local xcommentmappings = {
 	["g>"] = "Comment region",
 	["g<lt>"] = "Uncomment region",
 }
+local copilotmappings = {
+	["[["] = "previous solution",
+	["]]"] = "next solution",
+}
 which_key.register(ncommentmappings, { mode = "n" })
 which_key.register(xcommentmappings, { mode = "x" })
+which_key.register(copilotmappings, { mode = "n" })

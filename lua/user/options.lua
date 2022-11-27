@@ -48,12 +48,14 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-local netrw = {
+local global_options = {
   loaded = true,
   loaded_netrwPlugin = true,
+	copilot_proxy = "localhost:7890",
+	copilot_no_tab_map = true,
 }
 
-for k, v in pairs(netrw) do
+for k, v in pairs(global_options) do
   vim.g[k] = v
 end
 

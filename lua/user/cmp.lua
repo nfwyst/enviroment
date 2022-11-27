@@ -84,6 +84,8 @@ local source_mapping = {
 	path = "[Path]",
 }
 
+local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
 cmp.setup({
 	enabled = function()
 		return not _IS_LARGE_FILE(0) and not contains(filetype_exclude, vim.bo.filetype)
@@ -170,13 +172,13 @@ cmp.setup({
 	},
 	window = {
 		completion = {
-			border = { "", "", "", "│", "╯", "─", "╰", "│" },
+			border = border,
 			side_padding = 0,
 			col_offset = 1,
 			scrollbar = false,
 		},
 		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			border = border,
 		},
 	},
 	experimental = {

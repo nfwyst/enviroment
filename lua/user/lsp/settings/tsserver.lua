@@ -6,7 +6,8 @@ end
 return {
 	root_dir = function(pattern)
 		local cwd = vim.loop.cwd()
-		local root = util.root_pattern("package.json", "tsconfig.json", ".git")(pattern)
+		local root = util.root_pattern(".git")(pattern)
+		-- local root = util.root_pattern("package.json", "tsconfig.json", ".git")(pattern)
 		return root or cwd
 	end,
 	settings = {

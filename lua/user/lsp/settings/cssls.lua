@@ -5,5 +5,15 @@ return {
 				unknownAtRules = "ignore",
 			},
 		},
+		less = {
+			lint = {
+				unknownAtRules = "ignore",
+			},
+		},
+		scss = {
+			lint = {
+				unknownAtRules = "ignore",
+			},
+		},
 	},
 }

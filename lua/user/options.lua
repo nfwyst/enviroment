@@ -61,6 +61,5 @@ end
 
 vim.cmd([[
   set whichwrap+=<,>,[,],h,l
-  set iskeyword+=-
   set formatoptions-=cro
 ]])

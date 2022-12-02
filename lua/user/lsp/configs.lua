@@ -20,6 +20,7 @@ local servers = {
 	"zk",
 	"emmet_ls",
 	"cssmodules_ls",
+	"tailwindcss",
 }
 
 lsp_installer.setup({

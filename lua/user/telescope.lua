@@ -1,17 +1,28 @@
+local util_status_ok, util = pcall(require, "lspconfig/util")
 local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
+if not util_status_ok or not status_ok then
 	return
 end
 
 local actions = require("telescope.actions")
 
+_G.cwd = vim.loop.cwd()
+
+function _G.set_global_cwd()
+	_G.cwd = util.root_pattern(".git")(vim.fn.expand("%:p")) or ""
+	print("cwd set to: " .. cwd)
+end
+
+function _G.set_local_cwd()
+	_G.cwd = vim.loop.cwd() or ""
+	print("cwd set to: " .. cwd)
+end
+
 telescope.setup({
 	defaults = {
-
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
-
 		mappings = {
 			i = {
 				["<C-n>"] = actions.cycle_history_next,

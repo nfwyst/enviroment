@@ -105,8 +105,8 @@ local mappings = {
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-	["f"] = { "<cmd>Telescope find_files<cr>", "Find files" },
-	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+	["f"] = { "<cmd>lua require('telescope.builtin').find_files({ cwd = cwd })<cr>", "Find files" },
+	["F"] = { "<cmd>lua require('telescope.builtin').live_grep({ cwd = cwd })<cr>", "Find Text" },
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 	["r"] = "Code runner",
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
@@ -115,6 +115,8 @@ local mappings = {
 	["S"] = { "<cmd>e " .. vim.fn.stdpath("data") .. "/custom-snippets/package.json<cr>", "Open custom snippets" },
 	["T"] = { "<cmd>CmpTabnineHub<cr>", "Open tabnine hub" },
 	["n"] = { "<cmd>set ignorecase!<cr>", "Toggle case sensitive" },
+	["G"] = { "<cmd>lua set_global_cwd()<cr>", "Set global cwd" },
+	["L"] = { "<cmd>lua set_local_cwd()<cr>", "Set local cwd" },
 
 	C = {
 		name = "Copilot",
@@ -196,7 +198,7 @@ local mappings = {
 			"Document Diagnostics",
 		},
 		w = {
-			"<cmd>Telescope diagnostics<cr>",
+			"<cmd>lua require('telescope.builtin').diagnostics({ root_dir = cwd })<cr>",
 			"Workspace Diagnostics",
 		},
 		f = { "<cmd>lua vim.lsp.buf.format{async=false,timeout_ms=5000}; vim.cmd('normal! zx')<cr>", "Format" },

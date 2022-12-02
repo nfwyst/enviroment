@@ -21,9 +21,9 @@ end
 local themes = require("telescope.themes")
 local builtin = require("telescope.builtin")
 function _G.live_grep()
-  local theme = themes.get_ivy()
-  theme.cwd = cwd
-  builtin.live_grep(theme)
+	local theme = themes.get_ivy()
+	theme.cwd = cwd
+	builtin.live_grep(theme)
 end
 
 telescope.setup({
@@ -94,6 +94,15 @@ telescope.setup({
 
 				["?"] = actions.which_key,
 			},
+		},
+		file_ignore_patterns = {
+			"^node_modules/",
+			"pnpm-lock.yaml",
+			"package-lock.json",
+			"yarn.lock",
+			"^dist/",
+			"^build/",
+			"^temp/",
 		},
 	},
 	pickers = {

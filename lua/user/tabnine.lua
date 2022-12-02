@@ -5,7 +5,7 @@ end
 
 tabnine:setup({
 	max_lines = 1000,
-	max_num_results = 3,
+	max_num_results = 2,
 	sort = true,
 	run_on_every_keystroke = true,
 	snippet_placeholder = "..",

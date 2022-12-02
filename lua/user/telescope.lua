@@ -18,6 +18,14 @@ function _G.set_local_cwd()
 	print("cwd set to: " .. cwd)
 end
 
+local themes = require("telescope.themes")
+local builtin = require("telescope.builtin")
+function _G.live_grep()
+  local theme = themes.get_ivy()
+  theme.cwd = cwd
+  builtin.live_grep(theme)
+end
+
 telescope.setup({
 	defaults = {
 		prompt_prefix = " ",

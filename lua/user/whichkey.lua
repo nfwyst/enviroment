@@ -117,6 +117,7 @@ local mappings = {
 	["n"] = { "<cmd>set ignorecase!<cr>", "Toggle case sensitive" },
 	["G"] = { "<cmd>lua set_global_cwd()<cr>", "Set global cwd" },
 	["L"] = { "<cmd>lua set_local_cwd()<cr>", "Set local cwd" },
+	["R"] = { "source <afile>", "Reload nvim config" },
 
 	C = {
 		name = "Copilot",

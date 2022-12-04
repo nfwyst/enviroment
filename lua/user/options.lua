@@ -1,3 +1,4 @@
+local opt = vim.opt
 local options = {
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
@@ -40,12 +41,13 @@ local options = {
 	foldexpr = "nvim_treesitter#foldexpr()", -- enable treesitter experimental fold level,
 	foldlevel = 99, -- dont open fold at starting up
 	foldnestmax = 7, -- fold nest dont more than 2, default limit is 20
+	shortmess = opt.shortmess + "c", -- don't give ins-completion-menu messages
+	whichwrap = opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
+	formatoptions = opt.formatoptions - { "c", "r", "o" },
 }
 
-vim.opt.shortmess:append("c")
-
 for k, v in pairs(options) do
-	vim.opt[k] = v
+	opt[k] = v
 end
 
 local global_options = {
@@ -58,8 +60,3 @@ local global_options = {
 for k, v in pairs(global_options) do
 	vim.g[k] = v
 end
-
-vim.cmd([[
-  set whichwrap+=<,>,[,],h,l
-  set formatoptions-=cro
-]])

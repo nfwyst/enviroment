@@ -8,10 +8,31 @@ install.prefer_git = false
 
 configs.setup({
 	ensure_installed = "all", -- one of "all" or a list of languages
-	ignore_install = { "phpdoc", "org", "norg", "pascal", "c_sharp", "java", "kotlin", "php", "erlang", "elixir", "julia", "fish", "fortran", "perl", "ruby", "toml", "swift", "fusion" }, -- List of parsers to ignore installing
+	ignore_install = {
+		"phpdoc",
+		"org",
+		"norg",
+		"pascal",
+		"c_sharp",
+		"java",
+		"kotlin",
+		"php",
+		"erlang",
+		"elixir",
+		"julia",
+		"fish",
+		"fortran",
+		"perl",
+		"ruby",
+		"toml",
+		"swift",
+		"fusion",
+	}, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = function(_, bufnr) return _IS_LARGE_FILE(bufnr) end,
+		disable = function(_, bufnr)
+			return _IS_LARGE_FILE(bufnr)
+		end,
 	},
 	autopairs = {
 		enable = true,

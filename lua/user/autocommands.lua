@@ -1,74 +1,78 @@
-vim.cmd([[
-  augroup _general_settings
-    autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
-    autocmd BufWinEnter * silent!set formatoptions-=cro
-    autocmd FileType qf set nobuflisted
-  augroup end
+local api = vim.api
+local cmd = api.nvim_create_autocmd
+local group = api.nvim_create_augroup
 
-  augroup _git
-    autocmd!
-    autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
-  augroup end
+local _general_settings = group("_general_settings", { clear = true })
+cmd("FileType", {
+	pattern = { "qf", "help", "man", "lspinfo" },
+	command = "nnoremap <silent> <buffer> q :close<cr>",
+	group = _general_settings,
+})
+cmd("TextYankPost", {
+	pattern = "*",
+	command = "silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})",
+	group = _general_settings,
+})
+cmd("BufWinEnter", {
+	pattern = "*",
+	command = "silent!set formatoptions-=cro",
+	group = _general_settings,
+})
+cmd("FileType", {
+	pattern = "qf",
+	command = "silent!set nobuflisted",
+	group = _general_settings,
+})
 
-  augroup _markdown
-    autocmd!
-    autocmd FileType markdown setlocal wrap
-    autocmd FileType markdown setlocal spell
-  augroup end
+local _git = group("_git", { clear = true })
+cmd("FileType", { pattern = "gitcommit", command = "silent!setlocal wrap", group = _git })
+cmd("FileType", { pattern = "gitcommit", command = "silent!setlocal spell", group = _git })
 
-  augroup _auto_resize
-    autocmd!
-    autocmd VimResized * tabdo wincmd =
-  augroup end
+local _markdown = group("_markdown", { clear = true })
+cmd("FileType", { pattern = "markdown", command = "silent!setlocal wrap", group = _markdown })
+cmd("FileType", { pattern = "markdown", command = "silent!setlocal spell", group = _markdown })
 
-  augroup _alpha
-    autocmd!
-    autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
-  augroup end
+local _auto_resize = group("_auto_resize", { clear = true })
+cmd("VimResized", { pattern = "*", command = "silent!tabdo wincmd =", group = _auto_resize })
 
-  augroup _tsfold
-    autocmd!
-    autocmd BufWinEnter * silent!normal zx
-  augroup end
+local _alpha = group("_alpha", { clear = true })
+cmd("User", {
+	pattern = "AlphaReady",
+	command = "silent!set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2",
+	group = _alpha,
+})
 
-  augroup _outlines
-    autocmd!
-    autocmd FileType Outline set nospell
-  augroup end
+local _tsfold = group("_tsfold", { clear = true })
+cmd("BufWinEnter", { pattern = "*", command = "silent!normal zx", group = _tsfold })
 
-  if executable("node")
-    augroup _coderun
-      autocmd!
-      autocmd bufread,bufnewfile *.js noremap <leader>r :% w !node<enter>
-    augroup end
-  else
-    augroup _coderun
-      autocmd!
-      autocmd bufread,bufnewfile *.js noremap <leader>r :echo "node is not installed"
-    augroup end
-  endif
+local _outlines = group("_outlines", { clear = true })
+cmd("FileType", { pattern = "Outline", command = "silent!set nospell", group = _outlines })
 
-  augroup _last_position
-    autocmd!
-    autocmd BufWinEnter * silent!normal '"
-  augroup end
+local _coderun = group("_coderun", { clear = true })
+if vim.fn.executable("node") then
+	cmd(
+		{ "BufRead", "BufNewFile" },
+		{ pattern = "*.js", command = "noremap <leader>r :% w !node<cr>", group = _coderun }
+	)
+else
+	cmd(
+		{ "BufRead", "BufNewFile" },
+		{ pattern = "*.js", command = "noremap <leader>r :echo 'node is not installed'<cr>", group = _coderun }
+	)
+end
 
-  function! _remove_trailing_whitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-  endfun
-  augroup _remove_whitespace
-    autocmd!
-    autocmd BufWritePre * :call _remove_trailing_whitespaces()
-  augroup end
+local _last_position = group("_last_position", { clear = true })
+cmd("BufWinEnter", { pattern = "*", command = "silent!normal '", group = _last_position })
 
-  augroup _large_file
-    autocmd!
-    autocmd BufReadPre,BufWinEnter * silent!lua _CHECK_LARGE_FILE()
-  augroup end
-]])
+function _G._remove_trailing_whitespaces()
+	local l = vim.fn.line(".")
+	local c = vim.fn.col(".")
+	vim.cmd([[%s/\s\+$//e]])
+	vim.fn.cursor(l, c)
+end
+
+local _remove_whitespace = group("_remove_whitespace", { clear = true })
+cmd("BufWritePre", { pattern = "*", command = "silent!lua _remove_trailing_whitespaces()", group = _remove_whitespace })
+
+local _large_file = group("_large_file", { clear = true })
+cmd({ "BufReadPre", "BufWinEnter" }, { pattern = "*", command = "silent!lua _CHECK_LARGE_FILE()", group = _large_file })

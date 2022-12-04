@@ -19,7 +19,7 @@ if ns_status_ok then
 	})
 end
 
-vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show backgroung in LineNr
+vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show background in LineNr
 vim.g.Illuminate_useDeprecated = 1 -- Force old version illuminate behavior
 vim.g.Illuminate_ftblacklist = { "NvimTree", "alpha", "Outline" } -- The filetype that illuminate will not work
 
@@ -34,21 +34,15 @@ if status_ok then
 	})
 end
 
-vim.cmd([[
-try
-  colorscheme tokyonight "NeoSolarized
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-  set background=dark
-endtry
+local theme_ok, _ = pcall(vim.cmd, "colorscheme tokyonight")
+vim.opt.background = "dark"
+if not theme_ok then
+	vim.cmd("colorscheme NeoSolarized")
+end
 
-augroup BgHighlight
-  autocmd!
-  highlight Pmenu ctermbg=NONE guibg=NONE
-  highlight ColorColumn guibg=238
-  highlight IlluminatedWordText gui=bold cterm=bold guibg=#002b36
-  highlight LspReferenceRead cterm=bold gui=bold
-  highlight LineNr guifg=#737aa2
-  highlight CursorLineNr guifg=#ddd
-augroup END
-]])
+vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "ColorColumn", { bg = 238 })
+vim.api.nvim_set_hl(0, "IlluminatedWordText", { bold = true, bg = "#002b36" })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { bold = true })
+vim.api.nvim_set_hl(0, "LineNr", { fg = "#737aa2" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#dddddd" })

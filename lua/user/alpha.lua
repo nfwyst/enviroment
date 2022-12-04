@@ -23,11 +23,11 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-  -- NOTE: requires the fortune package to work
+	-- NOTE: requires the fortune package to work
 	local handle = io.popen("fortune")
-  if not handle then
-    return " "
-  end
+	if not handle then
+		return " "
+	end
 	local fortune = handle:read("*a")
 	handle:close()
 	return fortune

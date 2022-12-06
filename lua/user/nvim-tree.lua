@@ -54,7 +54,7 @@ nvim_tree.setup({
 	},
 	diagnostics = {
 		enable = true,
-		show_on_dirs = true,
+		show_on_dirs = false,
 		severity = {
 			min = vim.diagnostic.severity.ERROR,
 		},

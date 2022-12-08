@@ -14,7 +14,7 @@ nvim_tree.setup({
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
-		update_root = false,
+		update_root = true,
 	},
 	renderer = {
 		root_folder_modifier = ":t",
@@ -67,7 +67,7 @@ nvim_tree.setup({
 	},
 	view = {
 		adaptive_size = false,
-		width = 30,
+		width = 50,
 		side = "right",
 		mappings = {
 			list = {

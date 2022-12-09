@@ -46,6 +46,9 @@ local options = {
 	shortmess = opt.shortmess + "c", -- don't give ins-completion-menu messages
 	whichwrap = opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
 	formatoptions = opt.formatoptions - { "c", "r", "o" },
+	tabpagemax = 7, -- Maximum number of tab pages
+	maxfuncdepth = 33, -- Maximum depth of function calls for user functions
+	maxmapdepth = 333, -- Maximum number of times a mapping is done without resulting in a character to be used
 }
 
 for k, v in pairs(options) do

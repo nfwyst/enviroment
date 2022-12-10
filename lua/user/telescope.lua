@@ -25,9 +25,9 @@ telescope.setup({
 	defaults = {
 		prompt_prefix = " ",
 		selection_caret = " ",
-		-- path_display = { "smart" },
+		path_display = { "smart" },
 		preview = {
-			filesize_limit = 5,
+			filesize_limit = 1,
 		},
 		mappings = {
 			i = {
@@ -115,12 +115,29 @@ telescope.setup({
 pcall(telescope.load_extension, "dap")
 
 function _FIND_FILES()
-	builtin.find_files({ cwd = cwd })
+	local theme = themes.get_dropdown({ previewer = false })
+	theme.cwd = cwd
+	builtin.find_files(theme)
 end
 
 function _LIVE_GREP()
 	local theme = themes.get_ivy()
 	theme.cwd = cwd
-	theme.max_results = 30
+	theme.additional_args = function()
+		return {
+			"--glob=!*.svg",
+			"--glob=!yarn.lock",
+			"--glob=!pnpm-lock.yaml",
+			"--glob=!package-lock.json",
+			"--glob=!dist",
+			"--glob=!build",
+			"--glob=!lib",
+			"--glob=!temp",
+			"--glob=!.umi",
+			"--glob=!.cache",
+			"--glob=!__snapshots__",
+		}
+	end
+
 	builtin.live_grep(theme)
 end

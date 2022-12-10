@@ -30,7 +30,7 @@ local options = {
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
 	linebreak = true, -- wrap by word
-	scrolloff = 999999, -- is one of my fav
+	scrolloff = 99999, -- is one of my fav
 	sidescrolloff = 8, -- scroll left to right
 	inccommand = "split", -- show preview in split window when in %s mode to replace something
 	lazyredraw = true, -- don't redraw while executing macros (good performance config)
@@ -46,9 +46,6 @@ local options = {
 	shortmess = opt.shortmess + "c", -- don't give ins-completion-menu messages
 	whichwrap = opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
 	formatoptions = opt.formatoptions - { "c", "r", "o" },
-	tabpagemax = 7, -- Maximum number of tab pages
-	maxfuncdepth = 33, -- Maximum depth of function calls for user functions
-	maxmapdepth = 333, -- Maximum number of times a mapping is done without resulting in a character to be used
 }
 
 for k, v in pairs(options) do

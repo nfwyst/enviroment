@@ -108,7 +108,7 @@ local mappings = {
 	["f"] = { "<cmd>lua _FIND_FILES()<cr>", "Find files" },
 	["F"] = { "<cmd>lua _LIVE_GREP()<cr>", "Find Text" },
 	["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-	["r"] = "Code runner",
+	["r"] = "Recently used files",
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
 	["O"] = { "<cmd>lua vim.fn.system({'open', vim.fn.expand('%')})<cr>", "Open current file" },
 	["v"] = { "<cmd>e $MYVIMRC<cr>", "Open init.lua" },
@@ -202,7 +202,7 @@ local mappings = {
 			"<cmd>lua require('telescope.builtin').diagnostics({ root_dir = cwd })<cr>",
 			"Workspace Diagnostics",
 		},
-		f = { "<cmd>lua vim.lsp.buf.format{async=false,timeout_ms=5000}; vim.cmd('normal! zx')<cr>", "Format" },
+		f = { "<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		j = {

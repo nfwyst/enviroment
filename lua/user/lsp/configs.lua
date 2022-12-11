@@ -17,10 +17,8 @@ local servers = {
 	"tsserver",
 	"volar",
 	"yamlls",
-	"zk",
-	"emmet_ls",
-	"cssmodules_ls",
 	"tailwindcss",
+	"marksman",
 }
 
 lsp_installer.setup({

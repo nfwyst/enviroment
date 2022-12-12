@@ -12,7 +12,7 @@ return {
 	end,
 	settings = {
 		diagnostics = {
-			ignoredCodes = { 7016, 80001, 80006, 80007 },
+			ignoredCodes = { 7016, 80001, 80006, 80007, 2305 },
 		},
 	},
 }

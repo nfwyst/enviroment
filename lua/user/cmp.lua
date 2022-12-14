@@ -159,12 +159,12 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "luasnip", max_item_count = 12 },
-		{ name = "nvim_lsp", max_item_count = 12 },
-		{ name = "nvim_lua", max_item_count = 12 },
+		{ name = "luasnip", max_item_count = 7 },
+		{ name = "nvim_lsp", max_item_count = 7 },
+		{ name = "nvim_lua", max_item_count = 7 },
 		{ name = "cmp_tabnine" },
-		{ name = "buffer", max_item_count = 12 },
-		{ name = "path", max_item_count = 12 },
+		{ name = "buffer", max_item_count = 7 },
+		{ name = "path", max_item_count = 7 },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

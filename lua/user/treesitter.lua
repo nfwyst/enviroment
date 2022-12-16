@@ -37,7 +37,7 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	markid = { enable = true },
+	markid = { enable = false },
 	indent = { enable = true },
 	context_commentstring = { enable = true, enable_autocmd = false },
 	playground = {

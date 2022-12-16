@@ -15,7 +15,7 @@ vim.g.indent_blankline_filetype_exclude = {
 	"Outline",
 }
 vim.g.indentLine_enabled = 1
-vim.g.indent_blankline_char = "┊" -- ▏
+vim.g.indent_blankline_char = "▏" -- ┊
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_first_indent_level = false
 vim.g.indent_blankline_use_treesitter = true
@@ -42,14 +42,12 @@ vim.g.indent_blankline_context_patterns = {
 	"import_statement",
 	"operation_type",
 }
--- HACK: work-around for https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
-vim.wo.colorcolumn = "99999"
 
-vim.api.nvim_set_hl(0, "IndentBlanklineIndent1", { fg = "#61AFEF", nocombine = true, blend = 50 })
+local visual_gray = "#3E4452"
+vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = visual_gray, nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { sp = visual_gray, underline = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineContextSpaceChar", { nocombine = true })
 
 indent_blankline.setup({
 	show_current_context = true,
-	char_highlight_list = {
-		"IndentBlanklineIndent1",
-	},
 })

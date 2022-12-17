@@ -20,8 +20,6 @@ if ns_status_ok then
 end
 
 vim.g.NeoSolarized_lineNr = 0 -- 0 or 1 (default) -> To Show background in LineNr
-vim.g.Illuminate_useDeprecated = 1 -- Force old version illuminate behavior
-vim.g.Illuminate_ftblacklist = { "NvimTree", "alpha", "Outline" } -- The filetype that illuminate will not work
 
 local status_ok, tokyonight = pcall(require, "tokyonight")
 if status_ok then
@@ -42,7 +40,6 @@ end
 
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "NONE", bg = "NONE" })
 vim.api.nvim_set_hl(0, "ColorColumn", { bg = 238 })
-vim.api.nvim_set_hl(0, "IlluminatedWordText", { bold = true, bg = "#002b36" })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { bold = true })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#737aa2" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#dddddd" })

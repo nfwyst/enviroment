@@ -45,16 +45,6 @@ M.setup = function()
 	})
 end
 
-local function lsp_highlight_document(client)
-	-- Set autocommands conditional on server_capabilities
-	local status_ok, illuminate = pcall(require, "illuminate")
-	if not status_ok then
-		return
-	end
-	illuminate.on_attach(client)
-	-- end
-end
-
 M.on_attach = function(client, _)
 	-- vim.notify(client.name .. " starting...")
 	local disable_formatting_lsp = { "tsserver", "ccls", "sumneko_lua" }
@@ -62,7 +52,6 @@ M.on_attach = function(client, _)
 		client.server_capabilities.document_formatting = false
 		client.server_capabilities.document_range_formatting = false
 	end
-	lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

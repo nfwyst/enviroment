@@ -13,7 +13,7 @@ local options_for_large_file = {
 	cursorline = false,
 }
 
-_G.max_file_length = 50000
+_G.max_file_length = 5000
 
 function _G.contains(list, value)
 	for _, v in ipairs(list) do

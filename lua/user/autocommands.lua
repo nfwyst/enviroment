@@ -70,7 +70,7 @@ end
 
 cmd("BufWritePre", {
 	pattern = "*",
-	command = "silent!lua _remove_trailing_whitespaces(); vim.lsp.buf.format()",
+	command = "silent!lua _remove_trailing_whitespaces(); vim.lsp.buf.format{async=true}",
 	group = group("_remove_whitespace", { clear = true }),
 })
 

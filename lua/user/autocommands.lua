@@ -61,16 +61,9 @@ cmd("FileType", {
 	group = group("_outlines", { clear = true }),
 })
 
-function _G._remove_trailing_whitespaces()
-	local l = vim.fn.line(".")
-	local c = vim.fn.col(".")
-	vim.cmd([[%s/\s\+$//e]])
-	vim.fn.cursor(l, c)
-end
-
 cmd("BufWritePre", {
 	pattern = "*",
-	command = "silent!lua _remove_trailing_whitespaces(); vim.lsp.buf.format{async=true}",
+	command = "silent!lua vim.lsp.buf.format()",
 	group = group("_remove_whitespace", { clear = true }),
 })
 

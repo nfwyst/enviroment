@@ -14,7 +14,6 @@ nvim_tree.setup({
 	update_focused_file = {
 		enable = true,
 		update_cwd = true,
-		update_root = true,
 	},
 	renderer = {
 		root_folder_modifier = ":t",
@@ -76,8 +75,5 @@ nvim_tree.setup({
 				{ key = "v", cb = tree_cb("vsplit") },
 			},
 		},
-	},
-	git = {
-		ignore = false,
 	},
 })

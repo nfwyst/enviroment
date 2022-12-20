@@ -45,7 +45,6 @@ local options = {
 	foldnestmax = 7, -- fold nest dont more than 2, default limit is 20
 	shortmess = opt.shortmess + "c", -- don't give ins-completion-menu messages
 	whichwrap = opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
-	formatoptions = opt.formatoptions - { "c", "r", "o" },
 }
 
 for k, v in pairs(options) do
@@ -57,7 +56,6 @@ local global_options = {
 	loaded_netrwPlugin = true,
 	copilot_proxy = "localhost:7890",
 	copilot_no_tab_map = true,
-	user_emmet_leader_key = ",",
 }
 
 for k, v in pairs(global_options) do

@@ -43,9 +43,8 @@ vim.g.indent_blankline_context_patterns = {
 	"operation_type",
 }
 
-local visual_gray = "#3E4452"
-vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = visual_gray, nocombine = true })
-vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { sp = visual_gray, underline = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineContextChar", { fg = Visual_gray, nocombine = true })
+vim.api.nvim_set_hl(0, "IndentBlanklineContextStart", { sp = Visual_gray, underline = true })
 vim.api.nvim_set_hl(0, "IndentBlanklineContextSpaceChar", { nocombine = true })
 
 indent_blankline.setup({

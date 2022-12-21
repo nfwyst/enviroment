@@ -26,6 +26,7 @@ local options = {
 	softtabstop = 2, -- insert 2 spaces for a tab
 	cursorline = true, -- highlight the current line
 	number = true, -- set numbered lines
+	relativenumber = true, -- enable relative number
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
@@ -45,6 +46,8 @@ local options = {
 	foldnestmax = 7, -- fold nest dont more than 2, default limit is 20
 	shortmess = opt.shortmess + "c", -- don't give ins-completion-menu messages
 	whichwrap = opt.whichwrap + "<,>,[,],h,l", -- keys that allow move the cursor to previous/next line
+	guicursor = "", -- keep cursor block
+	colorcolumn = "81", -- number of column that should be highlight
 }
 
 for k, v in pairs(options) do

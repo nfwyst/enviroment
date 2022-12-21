@@ -38,8 +38,14 @@ if not theme_ok then
 	vim.cmd("colorscheme NeoSolarized")
 end
 
+Visual_gray = "#3E4452"
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "NONE", bg = "NONE" })
-vim.api.nvim_set_hl(0, "ColorColumn", { bg = 238 })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { bold = true })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#737aa2" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#dddddd" })
+vim.api.nvim_set_hl(0, "ColorColumn", {
+	bg = Visual_gray,
+	fg = Visual_gray,
+	sp = Visual_gray,
+	nocombine = true,
+})

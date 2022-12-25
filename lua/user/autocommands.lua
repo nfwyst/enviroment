@@ -73,3 +73,22 @@ cmd("BufRead", {
 	command = "silent!lua _CHECK_LARGE_FILE()",
 	group = group("_large_file", { clear = true }),
 })
+
+cmd({ "WinEnter", "BufWinEnter" }, {
+	pattern = "NvimTree*",
+	callback = function()
+		local def = vim.api.nvim_get_hl_by_name("Cursor", true)
+		vim.api.nvim_set_hl(0, "Cursor", vim.tbl_extend("force", def, { blend = 100 }))
+		vim.opt.guicursor:append("a:Cursor/lCursor")
+	end,
+	group = group("_disable_cursor_in_nvim_tree", { clear = true }),
+})
+
+cmd({ "BufLeave", "WinClosed" }, {
+	pattern = "NvimTree*",
+	callback = function()
+		local def = vim.api.nvim_get_hl_by_name("Cursor", true)
+		vim.api.nvim_set_hl(0, "Cursor", vim.tbl_extend("force", def, { blend = 0 }))
+	end,
+	group = group("_enable_cursor_in_normal", { clear = true }),
+})

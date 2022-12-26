@@ -5,4 +5,7 @@ end
 
 outline.setup({
 	position = "left",
+	width = 20,
+	highlight_hovered_item = false,
+	show_guides = false,
 })

@@ -5,8 +5,6 @@ end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
--- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-local diagnostics = null_ls.builtins.diagnostics
 
 local function on_init(new_client, _)
 	if vim.bo.filetype == "c" then
@@ -18,10 +16,8 @@ null_ls.setup({
 	debug = false,
 	on_init = on_init,
 	sources = {
-		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+		formatting.prettier,
 		formatting.stylua,
 		formatting.clang_format,
-		diagnostics.eslint,
-		diagnostics.stylelint,
 	},
 })

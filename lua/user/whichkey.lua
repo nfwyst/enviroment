@@ -189,6 +189,10 @@ local mappings = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
 			"Diff",
 		},
+		f = {
+			"<cmd>lua _FIND_GIT_FILES()<cr>",
+			"Find Git Files",
+		},
 	},
 
 	l = {

@@ -1,27 +1,37 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
+local mason_status_ok, mason = pcall(require, "mason")
+local lsp_status_ok, lsp = pcall(require, "lspconfig")
+local mason_lsp_status_ok, mason_lsp = pcall(require, "mason-lspconfig")
+if not mason_status_ok or not lsp_status_ok or not mason_lsp_status_ok then
 	return
 end
 
-local lspconfig = require("lspconfig")
+mason.setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
 
 local servers = {
 	"jsonls",
 	"sumneko_lua",
-	"ccls",
+	"clangd",
 	"cmake",
 	"cssls",
 	"gopls",
 	"html",
 	"sqls",
 	"tsserver",
-	"volar",
 	"yamlls",
 	"tailwindcss",
 	"marksman",
+	"emmet-ls",
 }
 
-lsp_installer.setup({
+mason_lsp.setup({
 	ensure_installed = servers,
 })
 
@@ -34,5 +44,5 @@ for _, server in pairs(servers) do
 	if has_custom_opts then
 		opts = vim.tbl_deep_extend("force", opts, server_custom_opts)
 	end
-	lspconfig[server].setup(opts)
+	lsp[server].setup(opts)
 end

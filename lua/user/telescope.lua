@@ -120,6 +120,12 @@ function _FIND_FILES()
 	builtin.find_files(theme)
 end
 
+function _FIND_GIT_FILES()
+	local theme = themes.get_dropdown({ previewer = false })
+	theme.cwd = cwd
+	builtin.git_files(theme)
+end
+
 function _LIVE_GREP()
 	local theme = themes.get_ivy()
 	theme.cwd = cwd

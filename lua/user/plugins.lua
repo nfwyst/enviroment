@@ -47,7 +47,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
 	use("akinsho/bufferline.nvim")
-	use("moll/vim-bbye")
+	use("famiu/bufdelete.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
@@ -76,9 +76,10 @@ return packer.startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-	-- use("RRethy/vim-illuminate") -- automatically highlighting other uses of the word under the cursor using lsp
+	use("RRethy/vim-illuminate") -- automatically highlighting other uses of the word under the cursor using lsp
 	use("simrat39/symbols-outline.nvim") -- enable outline based on lsp
 
 	-- Telescope

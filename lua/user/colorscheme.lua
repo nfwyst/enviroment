@@ -38,8 +38,25 @@ if not theme_ok then
 	vim.cmd("colorscheme NeoSolarized")
 end
 
+local ill_status_ok, illuminate = pcall(require, "illuminate")
+if not ill_status_ok then
+	return
+end
+illuminate.configure({
+	filetypes_denylist = {
+		"NvimTree",
+		"alpha",
+		"Outline",
+	},
+	large_file_cutoff = max_file_length,
+	min_count_to_highlight = 2,
+	under_cursor = false,
+})
+
 Visual_gray = "#3E4452"
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "NONE", bg = "NONE" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "LspReferenceRead", { bold = true })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#737aa2" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#dddddd" })

@@ -28,7 +28,8 @@ local servers = {
 	"yamlls",
 	"tailwindcss",
 	"marksman",
-	"emmet-ls",
+	"emmet_ls",
+	"eslint",
 }
 
 mason_lsp.setup({

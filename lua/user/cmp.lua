@@ -9,6 +9,7 @@ if not snip_status_ok then
 end
 
 local tabnine_compare_status_ok, tabnine_compare = pcall(require, "cmp_tabnine.compare")
+local copilot_compare_status_ok, copilot_compare = pcall(require, "copilot_cmp.comparators")
 local compare = cmp.config.compare
 local sorting = {
 	priority_weight = 2,
@@ -25,6 +26,10 @@ local sorting = {
 }
 if tabnine_compare_status_ok then
 	table.insert(sorting.comparators, 1, tabnine_compare)
+end
+if copilot_compare_status_ok then
+	table.insert(sorting.comparators, 1, copilot_compare.score)
+	table.insert(sorting.comparators, 1, copilot_compare.prioritize)
 end
 
 local from_vscode = require("luasnip/loaders/from_vscode")
@@ -68,6 +73,7 @@ local kind_icons = {
 	Event = "ﳅ",
 	Operator = "",
 	TypeParameter = "",
+	Copilot = "",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
@@ -82,9 +88,18 @@ local source_mapping = {
 	cmp_tabnine = "[Tn]",
 	buffer = "[Buffer]",
 	path = "[Path]",
+	copilot = "[C]",
 }
 
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
+local has_words_before = function()
+	if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+		return false
+	end
+	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+	return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+end
 
 cmp.setup({
 	enabled = function()
@@ -108,10 +123,13 @@ cmp.setup({
 		}),
 		-- Accept currently selected item. If none selected, `select` first item.
 		-- Set `select` to `false` to only confirm explicitly selected items.
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<CR>"] = cmp.mapping.confirm({
+			select = true,
+			behavior = cmp.ConfirmBehavior.Replace,
+		}),
 		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
+			if cmp.visible() and has_words_before() then
+				cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
 			elseif luasnip.jumpable(1) then
 				luasnip.jump(1)
 			elseif check_backspace() then
@@ -119,22 +137,16 @@ cmp.setup({
 			else
 				fallback()
 			end
-		end, {
-			"i",
-			"s",
-		}),
+		end, { "s", "i" }),
 		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
+			if cmp.visible() and has_words_before() then
+				cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
 			elseif luasnip.jumpable(-1) then
 				luasnip.jump(-1)
 			else
 				fallback()
 			end
-		end, {
-			"i",
-			"s",
-		}),
+		end, { "s", "i" }),
 	},
 	formatting = {
 		fields = { "abbr", "kind", "menu" },
@@ -144,12 +156,7 @@ cmp.setup({
 
 			if entry.source.name == "cmp_tabnine" then
 				local data = entry.completion_item.data or {}
-				local detail = data.detail
 				vim_item.kind = ""
-				if detail and detail:find(".*%%.*") then
-					vim_item.kind = vim_item.kind .. " " .. detail
-				end
-
 				if data.multiline then
 					vim_item.kind = vim_item.kind .. " " .. "[ML]"
 				end
@@ -159,6 +166,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		{ name = "copilot", max_item_count = 7 },
 		{ name = "luasnip", max_item_count = 7 },
 		{ name = "nvim_lsp", max_item_count = 7 },
 		{ name = "nvim_lua", max_item_count = 7 },

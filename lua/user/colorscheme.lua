@@ -53,7 +53,7 @@ illuminate.configure({
 	under_cursor = false,
 })
 
-Visual_gray = "#3E4452"
+local Visual_gray = "#3E4452"
 vim.api.nvim_set_hl(0, "Pmenu", { ctermbg = "NONE", bg = "NONE" })
 vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })

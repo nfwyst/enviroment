@@ -58,8 +58,5 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Enable lsp signature_help in insert/normal mode --
 keymap("i", "<c-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 
--- Enable copilot completion use ctrl+j
-keymap("i", "<c-j>", "copilot#Accept('<cr>')", { silent = true, script = true, expr = true, noremap = true })
-
 -- Switch between first column and first character
 keymap("n", "0", "col('.') == 1 ? '^': '0'", { expr = true, silent = true, noremap = true })

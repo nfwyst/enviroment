@@ -61,10 +61,10 @@ cmd("FileType", {
 	group = group("_outlines", { clear = true }),
 })
 
-cmd("BufWritePre", {
-	pattern = "*",
-	command = "silent!lua vim.lsp.buf.format()",
-	group = group("_remove_whitespace", { clear = true }),
+cmd("FileType", {
+	pattern = { "qf", "help", "man", "lspinfo" },
+	command = "silent!setlocal colorcolumn=0",
+	group = group("_no_colorcolumn", { clear = true }),
 })
 
 cmd("BufRead", {

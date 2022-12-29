@@ -118,7 +118,20 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua")
 
 	-- copilot
-	use("github/copilot.vim")
+	use({
+		"zbirenbaum/copilot.lua",
+		event = "VimEnter",
+		config = function()
+			require("user.defer.copilot")
+		end,
+	})
+	use({
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("user.defer.copilot-cmp")
+		end,
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

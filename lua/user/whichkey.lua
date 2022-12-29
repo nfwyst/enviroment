@@ -121,11 +121,14 @@ local mappings = {
 
 	C = {
 		name = "Copilot",
-		d = { "<cmd>Copilot disable<cr>", "Disable copilot" },
-		e = { "<cmd>Copilot enable<cr>", "Enable copilot" },
-		i = { "<cmd>Copilot setup<cr>", "Authenticate and enable GitHub Copilot" },
-		s = { "<cmd>Copilot status<cr>", "Check copilot status" },
-		p = { "<cmd>Copilot panel<cr>", "Open more completions" },
+		a = { "<cmd>Copilot auth<cr>", "Auth" },
+		p = { "<cmd>Copilot panel<cr>", "Open Panel" },
+		g = { "<cmd>Copilot suggestion<cr>", "Get suggestion" },
+		s = { "<cmd>Copilot status<cr>", "Check status" },
+		t = { "<cmd>Copilot toggle<cr>", "Toggle" },
+		v = { "<cmd>Copilot version<cr>", "Check version" },
+		r = "Refresh Panel",
+		o = "Open Panel",
 	},
 
 	d = {

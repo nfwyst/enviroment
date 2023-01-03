@@ -118,6 +118,7 @@ local mappings = {
 	["G"] = { "<cmd>lua set_global_cwd()<cr>", "Set global cwd" },
 	["L"] = { "<cmd>lua set_local_cwd()<cr>", "Set local cwd" },
 	["R"] = { "source <afile>", "Reload nvim config" },
+	["D"] = { "<cmd>lua require 'neogen'.generate()<cr>", "generate docs" },
 
 	C = {
 		name = "Copilot",

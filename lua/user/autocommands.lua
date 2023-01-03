@@ -81,7 +81,6 @@ cmd({ "WinEnter", "BufWinEnter" }, {
 		vim.api.nvim_set_hl(0, "Cursor", vim.tbl_extend("force", def, { blend = 100 }))
 		vim.opt.guicursor:append("a:Cursor/lCursor")
 	end,
-	group = group("_disable_cursor_in_nvim_tree", { clear = true }),
 })
 
 cmd({ "BufLeave", "WinClosed" }, {
@@ -89,6 +88,6 @@ cmd({ "BufLeave", "WinClosed" }, {
 	callback = function()
 		local def = vim.api.nvim_get_hl_by_name("Cursor", true)
 		vim.api.nvim_set_hl(0, "Cursor", vim.tbl_extend("force", def, { blend = 0 }))
+		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 	end,
-	group = group("_enable_cursor_in_normal", { clear = true }),
 })

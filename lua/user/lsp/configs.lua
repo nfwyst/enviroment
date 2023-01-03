@@ -28,7 +28,6 @@ local servers = {
 	"yamlls",
 	"tailwindcss",
 	"marksman",
-	"emmet_ls",
 	"eslint",
 }
 

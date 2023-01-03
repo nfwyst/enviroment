@@ -91,3 +91,10 @@ cmd({ "BufLeave", "WinClosed" }, {
 		vim.opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 	end,
 })
+
+cmd("FileType", {
+	pattern = { "html", "typescriptreact", "javascriptreact", "typescript", "javascript" },
+	once = true,
+	command = "silent!EmmetInstall",
+	group = group("_emmet", { clear = true }),
+})

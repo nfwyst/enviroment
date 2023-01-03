@@ -143,6 +143,9 @@ return packer.startup(function(use)
 		requires = { "nvim-treesitter/nvim-treesitter", "L3MON4D3/LuaSnip" },
 	})
 
+	-- emmet
+	use("mattn/emmet-vim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

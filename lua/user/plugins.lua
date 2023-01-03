@@ -146,6 +146,9 @@ return packer.startup(function(use)
 	-- emmet
 	use("mattn/emmet-vim")
 
+	-- make current buffer center
+	use("shortcuts/no-neck-pain.nvim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

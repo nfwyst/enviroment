@@ -113,7 +113,6 @@ local mappings = {
 	["O"] = { "<cmd>lua vim.fn.system({'open', vim.fn.expand('%')})<cr>", "Open current file" },
 	["v"] = { "<cmd>e $MYVIMRC<cr>", "Open init.lua" },
 	["S"] = { "<cmd>e " .. vim.fn.stdpath("data") .. "/custom-snippets/package.json<cr>", "Open custom snippets" },
-	["T"] = { "<cmd>CmpTabnineHub<cr>", "Open tabnine hub" },
 	["n"] = { "<cmd>set ignorecase!<cr>", "Toggle case sensitive" },
 	["G"] = { "<cmd>lua set_global_cwd()<cr>", "Set global cwd" },
 	["L"] = { "<cmd>lua set_local_cwd()<cr>", "Set local cwd" },

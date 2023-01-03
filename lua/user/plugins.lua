@@ -68,7 +68,6 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
-	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -123,13 +122,6 @@ return packer.startup(function(use)
 		event = "VimEnter",
 		config = function()
 			require("user.defer.copilot")
-		end,
-	})
-	use({
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua" },
-		config = function()
-			require("user.defer.copilot-cmp")
 		end,
 	})
 

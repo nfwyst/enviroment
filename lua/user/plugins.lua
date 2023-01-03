@@ -139,7 +139,13 @@ return packer.startup(function(use)
 	use("mattn/emmet-vim")
 
 	-- make current buffer center
-	use("shortcuts/no-neck-pain.nvim")
+	use({
+		"shortcuts/no-neck-pain.nvim",
+		event = "VimEnter",
+		config = function()
+			require("user.defer.no-neck-pain")
+		end,
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

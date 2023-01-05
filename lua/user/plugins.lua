@@ -47,7 +47,6 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
 	use("akinsho/bufferline.nvim")
-	use("famiu/bufdelete.nvim")
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim")
@@ -152,6 +151,29 @@ return packer.startup(function(use)
 		event = "VimEnter",
 		config = function()
 			require("user.defer.no-neck-pain")
+		end,
+	})
+
+	-- open ai
+	use({
+		"jackMort/ChatGPT.nvim",
+		event = "VimEnter",
+		config = function()
+			require("user.defer.chatgpt")
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
+
+	-- close buffers
+	use({
+		"kazhala/close-buffers.nvim",
+		event = "VimEnter",
+		config = function()
+			require("user.defer.close-buffers")
 		end,
 	})
 

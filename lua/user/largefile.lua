@@ -28,26 +28,6 @@ function _IS_LARGE_FILE(bufnr)
 	return vim.api.nvim_buf_line_count(bufnr) > max_file_length
 end
 
-FILETYPE_EXCLUDE = {
-	"NvimTree",
-	"alpha",
-	"Outline",
-	"dashboard",
-	"qf",
-	"help",
-	"man",
-	"lspinfo",
-	"gitcommit",
-	"TelescopePrompt",
-	"spectre_panel",
-	"startify",
-	"packer",
-	"neogitstatus",
-	"Trouble",
-	"",
-	nil,
-}
-
 function _CHECK_LARGE_FILE()
 	local filetype = vim.bo.filetype
 

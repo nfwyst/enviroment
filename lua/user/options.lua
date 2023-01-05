@@ -67,3 +67,23 @@ local global_options = {
 for k, v in pairs(global_options) do
 	vim.g[k] = v
 end
+
+FILETYPE_EXCLUDE = {
+	"NvimTree",
+	"alpha",
+	"Outline",
+	"dashboard",
+	"qf",
+	"help",
+	"man",
+	"lspinfo",
+	"gitcommit",
+	"TelescopePrompt",
+	"spectre_panel",
+	"startify",
+	"packer",
+	"neogitstatus",
+	"Trouble",
+	"",
+	nil,
+}

@@ -48,9 +48,18 @@ cmd("User", {
 
 cmd("BufRead", {
 	callback = function()
-		vim.api.nvim_create_autocmd("BufWinEnter", {
+		cmd("BufWinEnter", {
 			once = true,
-			command = "silent!normal! '\" | zx",
+			callback = function()
+				vim.cmd("silent!normal! '\" | zx")
+				local tree_api_ok, tree_api = pcall(require, "nvim-tree.api")
+				if not tree_api_ok then
+					return
+				end
+				if _IS_IN_NO_NECK_PAIN then
+					tree_api.tree.close()
+				end
+			end,
 		})
 	end,
 })

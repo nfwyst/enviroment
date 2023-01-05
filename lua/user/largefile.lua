@@ -28,7 +28,7 @@ function _IS_LARGE_FILE(bufnr)
 	return vim.api.nvim_buf_line_count(bufnr) > max_file_length
 end
 
-local filetype_exclude = {
+FILETYPE_EXCLUDE = {
 	"NvimTree",
 	"alpha",
 	"Outline",
@@ -51,7 +51,7 @@ local filetype_exclude = {
 function _CHECK_LARGE_FILE()
 	local filetype = vim.bo.filetype
 
-	if contains(filetype_exclude, filetype) or not filetype then
+	if contains(FILETYPE_EXCLUDE, filetype) or not filetype then
 		return false
 	end
 

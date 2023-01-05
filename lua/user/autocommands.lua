@@ -52,16 +52,27 @@ cmd("BufRead", {
 			once = true,
 			callback = function()
 				vim.cmd("silent!normal! '\" | zx")
-				local tree_api_ok, tree_api = pcall(require, "nvim-tree.api")
-				if not tree_api_ok then
-					return
-				end
-				if _IS_IN_NO_NECK_PAIN then
-					tree_api.tree.close()
-				end
 			end,
 		})
 	end,
+})
+
+cmd({ "BufWinEnter", "WinEnter" }, {
+	pattern = "*",
+	callback = function()
+		local filetype = vim.bo.filetype
+		if contains(FILETYPE_EXCLUDE, filetype) or not filetype then
+			return
+		end
+		local tree_api_ok, tree_api = pcall(require, "nvim-tree.api")
+		if not tree_api_ok then
+			return
+		end
+		if _IS_IN_NO_NECK_PAIN then
+			tree_api.tree.close()
+		end
+	end,
+	group = group("_nvim_tree_close", { clear = true }),
 })
 
 cmd("FileType", {

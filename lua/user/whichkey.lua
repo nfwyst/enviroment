@@ -103,7 +103,7 @@ local mappings = {
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["x"] = { "<cmd>x<cr>", "Save and quit" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
-	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+	["c"] = { "<cmd>BDelete! this<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["f"] = { "<cmd>lua _FIND_FILES()<cr>", "Find files" },
 	["F"] = { "<cmd>lua _LIVE_GREP()<cr>", "Find Text" },
@@ -116,7 +116,7 @@ local mappings = {
 	["n"] = { "<cmd>set ignorecase!<cr>", "Toggle case sensitive" },
 	["G"] = { "<cmd>lua set_global_cwd()<cr>", "Set global cwd" },
 	["L"] = { "<cmd>lua set_local_cwd()<cr>", "Set local cwd" },
-	["R"] = { "source <afile>", "Reload nvim config" },
+	["R"] = { "<cmd>source <afile><cr>", "Reload nvim config" },
 	["D"] = { "<cmd>lua require 'neogen'.generate()<cr>", "Generate docs" },
 	["m"] = { "<cmd>NoNeckPain<cr>", "Center buffer" },
 
@@ -130,6 +130,13 @@ local mappings = {
 		v = { "<cmd>Copilot version<cr>", "Check version" },
 		r = "Refresh Panel",
 		o = "Open Panel",
+	},
+
+	T = {
+		name = "ChatGpt",
+		o = { "<cmd>ChatGPT<cr>", "Open window" },
+		a = { "<cmd>ChatGPTActAs<cr>", "Open prompt" },
+		e = { "<cmd>ChatGPTEditWithInstructions<cr>", "Edit with instruction" },
 	},
 
 	d = {

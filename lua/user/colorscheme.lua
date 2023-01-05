@@ -43,11 +43,7 @@ if not ill_status_ok then
 	return
 end
 illuminate.configure({
-	filetypes_denylist = {
-		"NvimTree",
-		"alpha",
-		"Outline",
-	},
+	filetypes_denylist = FILETYPE_EXCLUDE,
 	large_file_cutoff = max_file_length,
 	min_count_to_highlight = 2,
 	under_cursor = false,
